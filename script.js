@@ -78,3 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const hero = document.querySelector('.hero');
   let isScrolling = false;
 });
+
+document.querySelector('.footer-cta').addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default anchor jump
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Smooth scroll effect
+  });
+});

@@ -696,6 +696,23 @@ body {
   color: #846d46; /* Hover color for contact links */
 }
 
+.footer-cta {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #c9af83;
+  border-radius: 25px;
+  color: #a59477; /* Cream color */
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-cta:hover {
+  background-color: #c9af83;
+  color: #1a1a1a;
+}
+
 /* Social Media */
 .social-icons {
   display: flex;
