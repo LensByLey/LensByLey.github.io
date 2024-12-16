@@ -337,7 +337,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .mission {
-    padding: 60px 20px;
+    padding: 30px 20px; /* Reduced padding from 60px */
   }
   
   .mission-text {
@@ -370,6 +370,7 @@ body {
   background-color: transparent;
   border-radius: 0;
   margin-top: 0; /* Remove top margin */
+  margin-bottom: 10px; /* Less space below portfolio */
 }
 
 .portfolio img {
@@ -406,11 +407,14 @@ body {
 /* Mobile Screens */
 @media (max-width: 480px) {
   .carousel {
-    margin-bottom: 10px; /* Even less space on mobile */
+    padding: 5px 15px; /* Further reduce padding */
+    margin-bottom: 5px; /* Minimized space below carousel */
+    margin-top: 5px; /* Minimized space above carousel */
   }
+
   .portfolio img {
-    width: 100%;
-    height: 250px;
+    width: 100%; /* Full width for smaller screens */
+    height: 200px; /* Maintain a consistent height */
   }
 }
 
@@ -749,12 +753,13 @@ body {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center-align content horizontally */
-    text-align: center; /* Center-align text inside each section */
-    gap: 20px; /* Adjust spacing between sections */
+  .carousel {
+    padding: 10px 20px; /* Adjust vertical padding */
+    margin-bottom: 10px; /* Reduce bottom margin */
+    margin-top: 10px; /* Reduce top margin */
+    height: 45vh; /* Slightly reduced height for mobile */
   }
+
 
   .social-icons {
     justify-content: center; /* Center social icons */
@@ -887,6 +892,51 @@ body {
   .portfolio img {
     width: 100%;
     height: 250px; /* Maintain height for consistency */
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .mission {
+    padding: 30px 20px; /* Reduced padding from 60px */
+  }
+
+  .carousel {
+    padding: 0 20px;
+    height: 45vh;
+    margin: 10px auto; /* Reduced margin top and bottom */
+  }
+
+  .packages {
+    padding: 30px 20px; /* Reduced padding from 60px */
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .mission {
+    padding: 20px; /* Further reduced padding */
+  }
+
+  .carousel {
+    padding: 0 15px;
+    margin: 5px auto; /* Minimal margin */
+    height: 40vh; /* Slightly shorter on mobile */
+  }
+
+  .packages {
+    padding: 20px; /* Further reduced padding */
+  }
+
+  /* Adjust mission text spacing */
+  .mission-text {
+    padding: 1rem;
+    margin-bottom: 10px;
+  }
+
+  /* Reduce space between mission and carousel */
+  .mission-container {
+    margin-bottom: 10px;
   }
 }
 
