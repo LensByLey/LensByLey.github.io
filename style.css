@@ -1,0 +1,875 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Lora', serif;
+    color: #333;
+    line-height: 1.6;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background-color: #f7f4ee; /* Ensure the background color matches */
+  }
+  
+/* Navigation Bar */
+.navbar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spaces out socials and button */
+    width: calc(100% - 20px); /* Ensures content stays within the viewport */
+    padding-right: 20px; /* Adds padding on the right to avoid cutoff */
+    z-index: 3;
+  }
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+  }
+  
+  .navbar ul li {
+    margin: 0; /* Removes any default margin */
+  }
+  
+  .social-icon {
+    width: 25px; /* Adjusts the size of the icons */
+    height: 25px; /* Ensures uniform size */
+    cursor: pointer; /* Adds a pointer cursor for better UX */
+    transition: transform 0.2s, opacity 0.2s; /* Adds a hover effect */
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2); /* Slightly enlarges the icon on hover */
+    opacity: 0.8; /* Makes the icon slightly transparent on hover */
+  }
+  
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  background-image: url('./porfolio/1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Darker and Blurred Background Overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay for more shadow effect */
+  backdrop-filter: blur(2.0px); /* Reduced blur effect */
+  z-index: 1; /* Ensure it sits above the background image but below the text */
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2; /* Ensure text is above the overlay */
+  color: #fff;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4.5rem, 12vw, 7rem);
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-location {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.subtext {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  letter-spacing: 2px;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+  margin-bottom: 2.5rem;
+}
+
+/* Hero Actions Container */
+/* Fade-in Keyframes */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Actions Container */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* Button */
+.call-me-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 1.2rem 3rem;
+  border: none; /* Remove border for a cleaner look */
+  border-radius: 8px; /* Sharper corners */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(255, 239, 204, 0.5); /* Light beige background with transparency */
+  backdrop-filter: blur(10px); /* Blurry background effect */
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1), /* Subtle shadow */
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2); /* Inner glow */
+  transition: 
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards;
+  animation-delay: 1.2s;
+}
+
+.call-me-btn:hover {
+  background: rgba(255, 239, 204, 0.7); /* Slightly more opaque on hover */
+  transform: translateY(-2px) scale(1.02); /* Slight scale up */
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15), /* Larger shadow */
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3), /* Enhanced inner glow */
+    0 0 20px rgba(255, 255, 255, 0.4); /* Soft white glow */
+}
+
+.call-me-btn:active {
+  transform: translateY(0) scale(0.98); /* Slight press effect */
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    height: 100vh; /* Ensure full viewport height on mobile */
+    min-height: -webkit-fill-available; /* Fix for iOS Safari */
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+  
+  .hero-text {
+    padding: 0 1rem;
+    margin-top: -50px; /* Adjust if needed to center content better */
+  }
+  
+  .call-me-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mission Section Styling */
+.mission {
+  background-color: #f7f4ee;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.mission-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.mission-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.mission-accent {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #846d46;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.mission-text {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mission-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mission-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: #846d46;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #846d46;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.mission-text:hover .highlight::after {
+  transform: scaleX(1);
+}
+
+.mission-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.mission-cta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #846d46;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mission {
+    padding: 60px 20px;
+  }
+  
+  .mission-text {
+    padding: 1.5rem;
+  }
+  
+  .mission-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 0;
+  margin-top: 0; /* Remove top margin */
+}
+
+.portfolio img {
+  width: calc(33.33% - 10px);
+  height: 250px; /* Fixed height for consistent sizing */
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+/* Larger Screens */
+@media (min-width: 1024px) {
+  .portfolio img {
+    width: calc(33.33% - 10px);
+    height: 300px; /* Slightly taller on larger screens */
+  }
+}
+
+/* Tablet Screens */
+@media (max-width: 768px) {
+  .carousel {
+    height: 50vh;
+    margin-bottom: 15px; /* Less space on mobile */
+  }
+  .slide img {
+    object-position: center;
+  }
+  .portfolio img {
+    width: calc(50% - 10px);
+    height: 200px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .carousel {
+    margin-bottom: 10px; /* Even less space on mobile */
+  }
+  .portfolio img {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+/* Carousel Section */
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 20px; /* Space between carousel and packages */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: transparent;
+  height: 70vh; /* Maintain height for better image proportions */
+}
+
+.slides {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  flex: 0 0 100%;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+/* Navigation Buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  z-index: 2;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+  left: 1rem;
+}
+
+.carousel-button.next {
+  right: 1rem;
+}
+
+/* Packages Section */
+.packages {
+  background-color: #f7f4ee; /* Light beige background */
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif; /* Use Cormorant Garamond for the main font */
+}
+
+.packages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.packages-title {
+  font-size: clamp(2.5rem, 6vw, 3.5rem); /* Increased size for more impact */
+  font-weight: 800; /* Increased weight for emphasis */
+  letter-spacing: 2px; /* Adjusted letter spacing for a grander look */
+  color: #c9af83; /* Changed color for better visibility */
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Added subtle text shadow */
+  padding: 10px; /* Added padding for a more spacious feel */
+  border-bottom: 2px solid #846d46; /* Optional: Added a bottom border */
+}
+.price-list {
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #846d46;
+  margin-left: 10px;
+}
+
+.packages-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.package-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: visible;
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.package-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.package-card h3 {
+  font-family: 'Cormorant Garamond', serif; /* Use Cormorant Garamond for package titles */
+  font-size: 1.5rem; /* Adjusted size for visibility */
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.package-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.package-card ul li {
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat for list items */
+  font-size: 1rem; /* Adjusted size for readability */
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.price-btn {
+  background-color: transparent;
+  color: #846d46;
+  border: 2px solid #846d46;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.price-btn:hover {
+  background-color: #846d46;
+  color: #fff;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+.packages-footer {
+  margin-top: 40px;
+  color: #846d46;
+}
+
+.packages-footer p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.packages-footer a {
+  font-size: 1.2rem;
+  color: #846d46;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.packages-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .packages-list {
+    grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+  }
+}
+
+/* Ribbon styling for popular package */
+.package-card {
+  position: relative; /* Needed for ribbon positioning */
+  overflow: visible; /* Allow ribbon to extend outside card */
+}
+
+.package-card.featured {
+  border: 2px solid #c9af83; /* Subtle golden border */
+}
+
+.ribbon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #c9af83;
+  color: white;
+  padding: 8px 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+
+
+/* Footer Styles */
+.site-footer {
+  background-color: #1a1a1a; /* Dark background */
+  color: #eaeaea; /* Light text */
+  padding: 30px 20px; /* Compact height */
+  font-family: 'Fraunces', serif;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align to the top of the footer */
+  gap: 40px; /* Adjust spacing between sections */
+  max-width: 800px; /* Reduce width for tighter layout */
+  margin: 0 auto;
+}
+
+.footer-contact,
+.footer-social {
+  flex: 1 1 45%; /* Evenly divide the space between the two sections */
+  text-align: center;
+}
+
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #a59477; /* Cream headings */
+  text-align: center;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.footer-contact a {
+  color: #a59477; /* Cream links */
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  color: #846d46; /* Hover color for contact links */
+}
+
+/* Social Media */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1); /* Subtle hover effect */
+}
+
+/* Call-to-Action Button */
+.footer-cta {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #c9af83;
+  border-radius: 25px;
+  color: #a59477;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-cta:hover {
+  background-color: #c9af83;
+  color: #1a1a1a; /* Dark text on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align content horizontally */
+    text-align: center; /* Center-align text inside each section */
+    gap: 20px; /* Adjust spacing between sections */
+  }
+
+  .social-icons {
+    justify-content: center; /* Center social icons */
+  }
+
+  .footer-contact,
+  .footer-social {
+    flex: 1 1 100%; /* Full width for each section */
+    text-align: center; /* Center-align content within sections */
+  }
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  justify-content: center; /* Center the icons */
+  gap: 20px; /* Space between icons */
+  margin-top: 1rem; /* Add some space above */
+}
+
+.social-icon {
+  width: 30px; /* Slightly larger for better visibility */
+  height: 30px;
+  opacity: 0.7; /* Decreased opacity for a more subtle look */
+  transition: transform 0.3s, opacity 0.3s; /* Smooth transition */
+}
+
+.social-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  opacity: 1; /* Full opacity on hover */
+}
+
+/* Adjust spacing for mobile devices */
+@media (max-width: 768px) {
+  .mission {
+    margin-bottom: 20px; /* Reduce bottom margin for the mission section */
+  }
+
+  .packages {
+    margin-top: 10px; /* Reduce top margin for the packages section */
+  }
+
+  .carousel {
+    margin-top: 10px; /* Adjust carousel margin if needed */
+  }
+}
+
+/* Fullscreen Container */
+.fullscreen-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-overlay {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+.fullscreen-overlay img {
+  max-width: 100%;
+  max-height: 95vh;
+  object-fit: contain;
+}
+
+/* Close Button */
+.close-fullscreen {
+  position: absolute;
+  top: 20px; /* Adjusted position from the top */
+  right: 20px; /* Adjusted position from the right */
+  background: rgba(255, 255, 255, 0.3); /* Semi-transparent background for better visibility */
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%; /* Make it circular */
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 2; /* Ensure it is above the image */
+}
+
+.close-fullscreen:hover {
+  background: rgba(255, 255, 255, 0.5); /* Slightly more opaque on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Make carousel images clickable */
+.slide img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.slide img:hover {
+  transform: scale(1.02);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .carousel {
+    padding: 0 20px; /* Add horizontal padding */
+    height: 50vh; /* Adjust height for mobile */
+    margin-bottom: 10px; /* Less space between sections */
+  }
+
+  .slide img {
+    object-position: center;
+  }
+
+  .portfolio img {
+    width: calc(50% - 10px);
+    height: 200px; /* Maintain height for consistency */
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .carousel {
+    padding: 0 15px; /* Slightly less padding on smaller screens */
+    margin-bottom: 5px; /* Even less space on mobile */
+  }
+
+  .portfolio img {
+    width: 100%;
+    height: 250px; /* Maintain height for consistency */
+  }
+}
+
